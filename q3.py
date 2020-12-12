@@ -3,31 +3,6 @@ import numpy as np
 import math
 
 """ Question 3 b"""
-
-
-def lcs(X, Y):
-    # find the length of the strings
-    m = len(X)
-    n = len(Y)
-    max_score = 0
-    # declaring the array for storing the dp values
-    L = np.zeros((m + 1, n + 1))
-
-    """Following steps build L[m+1][n+1] in bottom up fashion 
-    Note: L[i][j] contains length of LCS of X[0..i-1] 
-    and Y[0..j-1]"""
-    for i in range(1, m):
-        for j in range(1, n):
-            if X[i - 1] == Y[j - 1]:
-                L[i][j] = L[i - 1][j - 1] + 1
-            else:
-                L[i][j] = 0
-            if L[i][j] > max_score:
-                max_score = L[i][j]
-
-    return max_score
-
-
 def sum_homology(S, T):
     p_match = 0.2
     p_mismatch = 0.0125
@@ -67,6 +42,4 @@ S, T = 'ATAAGGCATTGACCGTATTGCCAA', 'CCCATAGGTGCGGTAGCC'
 
 sum_homology(S, T)
 
-S, T = 'TAGTCACG', 'AGACTGTC'
 
-print("Length of LCS is ", lcs(S, T))
